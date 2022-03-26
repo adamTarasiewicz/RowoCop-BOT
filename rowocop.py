@@ -6,8 +6,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get("https://system.mrugalski.pl/")
 driver.maximize_window()
 
-zaczynamy = driver.find_element(By.ID, "go")
-zaczynamy.click()
+zaczynamy = driver.find_element(By.ID, "go").click()
 
 kop = driver.find_element(By.ID, "kop")
 
