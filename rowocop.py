@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 from webdriver_manager.chrome import ChromeDriverManager
-import time
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get("https://system.mrugalski.pl/")
@@ -26,13 +24,11 @@ coach = driver.find_element(By.ID, "coach")
 kasa = driver.find_element(By.XPATH, "//*[@id='kasa']/b")
 month = driver.find_element(By.XPATH, "//*[@id='ilem']/b")
 
-workerNumbers = 4
-boughtWorkers = 0
-
-superKwota = 500000
+zatrudnij_pracownika = 0
+kupno_koparki = 500000
 
 
-def ww(self=WebElement):
+def koszty(self):
     if self.is_displayed():
         self.click()
 
@@ -40,20 +36,20 @@ def ww(self=WebElement):
 if __name__ == '__main__':
     for i in range(0, 1000000000000000000):
         kop.click()
-        ww(ceidk1)
-        ww(ksiazka1)
-        ww(ksiazka2)
-        ww(asystentka)
-        ww(motywacja)
-        ww(szkolenie)
+        koszty(ceidk1)
+        koszty(ksiazka1)
+        koszty(ksiazka2)
+        koszty(asystentka)
+        koszty(motywacja)
+        koszty(szkolenie)
 
-        if int(month.text) * 4 > boughtWorkers:
-            ww(pracownik)
-            boughtWorkers = boughtWorkers + 1
+        if int(month.text) * 4 > zatrudnij_pracownika:
+            koszty(pracownik)
+            zatrudnij_pracownika += 1
 
-        ww(kierownik)
-        ww(coach)
+        koszty(kierownik)
+        koszty(coach)
 
-        if int(kasa.text) > superKwota:
-            ww(koparka)
-            superKwota += 100000
+        if int(kasa.text) > kupno_koparki:
+            koszty(koparka)
+            kupno_koparki += 100000
