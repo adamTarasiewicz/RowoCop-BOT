@@ -12,4 +12,3 @@ start = driver.find_element(By.ID, "start")
 
 while True:
     start.click()
-
